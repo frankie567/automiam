@@ -7,9 +7,9 @@
         <div class="col-md-12">
             <h1>{{ 'automiam.menu.new.title'|trans }}</h1>
             {{ form_start(form) }}
-                <div class="row form-group">
-                    <div class="col-xs-6">{{ form_label(form.beginDate) }} {{ form_widget(form.beginDate) }}</div>
-                    <div class="col-xs-6">{{ form_label(form.endDate) }} {{ form_widget(form.endDate) }}</div>
+                <div class="row form-group {{ not form.vars.valid ? 'has-error': '' }}">
+                    <div class="col-xs-6">{{ form_errors(form.beginDate) }} {{ form_label(form.beginDate) }} {{ form_widget(form.beginDate) }}</div>
+                    <div class="col-xs-6">{{ form_errors(form.beginDate) }} {{ form_label(form.endDate) }} {{ form_widget(form.endDate) }}</div>
                 </div>
                 {{ form_rest(form) }}
                 <div class="form-group">

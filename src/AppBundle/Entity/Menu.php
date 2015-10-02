@@ -4,6 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 /**
  * Menu
  *
@@ -25,6 +28,8 @@ class Menu
      * @var \DateTime
      *
      * @ORM\Column(name="beginDate", type="date")
+     * @Assert\Date()
+     * @Assert\GreaterThanOrEqual("today")
      */
     private $beginDate;
 
@@ -32,6 +37,8 @@ class Menu
      * @var \DateTime
      *
      * @ORM\Column(name="endDate", type="date")
+     * @Assert\Date()
+     * @Assert\GreaterThanOrEqual("today")
      */
     private $endDate;
     
@@ -138,5 +145,18 @@ class Menu
     public function getDayMenus()
     {
         return $this->dayMenus;
+    }
+    
+    /**
+     * @Assert\Callback
+     */
+    public function beginDateLessThanEndDate(ExecutionContextInterface $context)
+    {
+        if ($this->getEndDate() < $this->getBeginDate())
+        {
+            $context->buildViolation('automiam.menu.new.begin_date_less_than_end_date')
+                ->atPath('beginDate')
+                ->addViolation();
+        }
     }
 }

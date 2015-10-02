@@ -4,3 +4,6 @@ automiam:
             name_required: "Vous devez indiquer le nom de la recette"
             category_required: "Vous devez indiquer un type de plat"
             one_tag_minimum: "Vous devez sélectionner au moins un mot-clé"
+    menu:
+        new:
+            begin_date_less_than_end_date: "La date de début doit être avant la date de fin"

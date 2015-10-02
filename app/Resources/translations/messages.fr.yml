@@ -3,4 +3,4 @@ automiam:
     navbar:
         toggle_navigation: "Ouvrir le menu"
         home: "Accueil"
-        recipes: "Recettes"
+        recipes: "Mes recettes"

@@ -19,3 +19,8 @@ automiam:
         edit:
             title: "Modifier la recette \"%recipe%\""
             submit: "Sauvegarder"
+    menu:
+        new:
+            title: "Nouveau menu"
+            begin_date: "Du"
+            end_date: "au"

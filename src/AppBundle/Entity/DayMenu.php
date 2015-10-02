@@ -29,7 +29,7 @@ class DayMenu
     private $day;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Men", inversedBy="dayMenus")
+     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="dayMenus")
      */
     private $menu;
     
@@ -82,11 +82,11 @@ class DayMenu
     /**
      * Set menu
      *
-     * @param \AppBundle\Entity\Men $menu
+     * @param \AppBundle\Entity\Menu $menu
      *
      * @return DayMenu
      */
-    public function setMenu(\AppBundle\Entity\Men $menu = null)
+    public function setMenu(\AppBundle\Entity\Menu $menu = null)
     {
         $this->menu = $menu;
         $menu->addDayMenu($this);
@@ -96,7 +96,7 @@ class DayMenu
     /**
      * Get menu
      *
-     * @return \AppBundle\Entity\Men
+     * @return \AppBundle\Entity\Menu
      */
     public function getMenu()
     {

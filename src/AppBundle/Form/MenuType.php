@@ -16,10 +16,18 @@ class MenuType extends AbstractType
     {
         $builder
             ->add('beginDate', null, array(
-                'label' => 'automiam.menu.new.begin_date'
+                'label' => 'automiam.menu.new.begin_date',
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'format' => 'dd/MM/yyyy',
+                'attr' => array('datepicker' => 'true')
             ))
             ->add('endDate', null, array(
-                'label' => 'automiam.menu.new.end_date'
+                'label' => 'automiam.menu.new.end_date',
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'format' => 'dd/MM/yyyy',
+                'attr' => array('datepicker' => 'true')
             ))
         ;
     }

@@ -14,7 +14,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class=""><a href="#">{{ 'automiam.navbar.home'|trans }}</a></li>
-                <li class="{{ route matches '/route_*/' ? 'active' : '' }}"><a href="{{ path('recipe_view_recipes_route') }}">{{ 'automiam.navbar.recipes'|trans }}</a></li>
+                <li class="{{ route matches '/recipe_*/' ? 'active' : '' }}"><a href="{{ path('recipe_view_recipes_route') }}">{{ 'automiam.navbar.recipes'|trans }}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

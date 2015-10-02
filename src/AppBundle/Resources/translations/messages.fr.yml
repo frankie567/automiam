@@ -24,3 +24,4 @@ automiam:
             title: "Nouveau menu"
             begin_date: "Du"
             end_date: "au"
+            submit: "Miam !"

@@ -24,7 +24,7 @@ class MenuController extends Controller
      */
     public function newMenuAction(Request $request)
     {
-        $recipe = new Menu($this->getUser());
+        $menu = new Menu($this->getUser());
         $form = $this->createForm(new MenuType(), $menu);
         
         $form->handleRequest($request);
@@ -35,7 +35,7 @@ class MenuController extends Controller
             $em->persist($menu);
             $em->flush();
             
-            //return $this->redirect($this->generateURL('recipe_view_recipes_route'));
+            return $this->redirect($this->generateURL('menu_edit_route', array('id' => $menu->getId())));
         }
         
         return array(
@@ -44,14 +44,16 @@ class MenuController extends Controller
     }
 
     /**
-     * @Route("/edit")
+     * @Route("/edit/{id}", name="menu_edit_route")
+     * @ParamConverter("menu", class="AppBundle:Menu")
      * @Template()
      */
-    public function editMenuAction()
+    public function editMenuAction($menu, Request $request)
     {
         return array(
-                // ...
-            );    }
+            "menu" => $menu
+        );
+    }
 
     /**
      * @Route("/delete")

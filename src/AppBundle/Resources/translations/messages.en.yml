@@ -1,0 +1,29 @@
+automiam:
+    recipe:
+        view_recipes:
+            title: "My recipes"
+            new: "New recipe"
+            name: "Name"
+            category: "Dish type"
+            tags: "Tags"
+            actions: "Actions"
+            edit: "Edit"
+        new:
+            title: "New recipe"
+            submit: "Save"
+            name: "Recipe's name"
+            recipe: "Recipe"
+            category: "Dish type"
+            select_category: "Select a type of dish"
+            tags: "Tags"
+        edit:
+            title: "Edit recipe \"%recipe%\""
+            submit: "Save"
+    menu:
+        new:
+            title: "New menu"
+            begin_date: "From"
+            end_date: "to"
+            submit: "Yummy !"
+        edit:
+            title: "My menu from %beginDate% to %endDate%"

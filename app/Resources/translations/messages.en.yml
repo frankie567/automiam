@@ -1,0 +1,6 @@
+automiam:
+    site_title: "Automiam"
+    navbar:
+        toggle_navigation: "Toggle menu"
+        home: "Home"
+        recipes: "My recipes"

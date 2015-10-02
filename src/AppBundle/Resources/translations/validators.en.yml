@@ -1,0 +1,9 @@
+automiam:
+    recipe:
+        new:
+            name_required: "You have to type a recipe name"
+            category_required: "You have to select a type of dish"
+            one_tag_minimum: "You have to select at least one tag"
+    menu:
+        new:
+            begin_date_less_than_end_date: "Begin date has to be before end date"

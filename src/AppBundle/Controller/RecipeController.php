@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Recipe;
@@ -23,7 +24,7 @@ class RecipeController extends Controller
      */
     public function viewRecipesAction()
     {
-        $recipes = $this->getDoctrine()->getRepository('AppBundle:Recipe')->findAll();
+        $recipes = $this->getDoctrine()->getRepository('AppBundle:Recipe')->findBy(array("user" => $this->getUser()));
 
         return array(
             "recipes" => $recipes
@@ -31,7 +32,7 @@ class RecipeController extends Controller
     }
     
     /**
-     * @Route("/new")
+     * @Route("/new", name="recipe_new_route")
      * @Template()
      */
     public function newRecipeAction(Request $request)
@@ -56,14 +57,30 @@ class RecipeController extends Controller
     }
 
     /**
-     * @Route("/edit")
+     * @Route("/edit/{slug}", name="recipe_edit_route")
+     * @ParamConverter("recipe", class="AppBundle:Recipe")
      * @Template()
      */
-    public function editRecipeAction()
+    public function editRecipeAction($recipe, Request $request)
     {
+        $form = $this->createForm(new RecipeType(), $recipe);
+        
+        $form->handleRequest($request);
+        if ($form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($recipe);
+            $em->flush();
+            
+            return $this->redirect($this->generateURL('recipe_view_recipes_route'));
+        }
+        
         return array(
-                // ...
-            );    }
+            "recipe" => $recipe,
+            "form" => $form->createView()
+        );
+    }
 
     /**
      * @Route("/delete")

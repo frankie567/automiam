@@ -86,3 +86,10 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+stof_doctrine_extensions:
+    default_locale: "%locale%"
+    translation_fallback: true
+    orm:
+        default:
+            sluggable: true

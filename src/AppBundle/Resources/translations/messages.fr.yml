@@ -1,5 +1,13 @@
 automiam:
     recipe:
+        view_recipes:
+            title: "Mes recettes"
+            new: "Nouvelle recette"
+            name: "Nom"
+            category: "Type de plat"
+            tags: "Mots-clés"
+            actions: "Actions"
+            edit: "Modifier"
         new:
             title: "Nouvelle recette"
             submit: "Sauvegarder"
@@ -8,3 +16,6 @@ automiam:
             category: "Type de plat"
             select_category: "Sélectionnez un type de plat"
             tags: "Mots-clés"
+        edit:
+            title: "Modifier la recette \"%recipe%\""
+            submit: "Sauvegarder"

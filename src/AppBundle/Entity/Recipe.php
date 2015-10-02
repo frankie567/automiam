@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -35,6 +36,14 @@ class Recipe
      * @Assert\NotBlank(message = "automiam.recipe.new.name_required")
      */
     private $name;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
 
     /**
      * @var string
@@ -207,5 +216,29 @@ class Recipe
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Recipe
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

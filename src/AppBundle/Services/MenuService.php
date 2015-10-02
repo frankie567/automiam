@@ -11,7 +11,7 @@ class MenuService
     {
         if (count($menu->getDayMenus()) == 0)
         {
-            $currentDate = $menu->getBeginDate();
+            $currentDate = clone $menu->getBeginDate();
             while ($currentDate <= $menu->getEndDate())
             {
                 $dayMenu = new DayMenu();

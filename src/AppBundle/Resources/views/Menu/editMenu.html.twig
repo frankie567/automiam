@@ -5,10 +5,20 @@
 {% block body %}
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ 'automiam.menu.edit.title'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMM')}) }}</h1>
-            {% for dayMenu in menu.dayMenus %}
-                {{ dayMenu.day|date }}<br>
-            {% endfor %}
+            <h1>{{ 'automiam.menu.edit.title'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMMM')}) }}</h1>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            {% for dayMenu in menu.dayMenus %}
+                                <th>
+                                    {{ dayMenu.day|localizeddate(format = 'EEEE d') }}
+                                </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}

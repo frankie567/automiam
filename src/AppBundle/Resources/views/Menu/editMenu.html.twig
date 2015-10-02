@@ -3,5 +3,12 @@
 {% block title %}AppBundle:Menu:editMenu{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Menu:editMenu page</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ 'automiam.menu.edit.title'|trans }}</h1>
+            {% for dayMenu in menu.dayMenus %}
+                {{ dayMenu.day|date }}<br>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,4 @@
+services:
+    automiam.menu:
+        class: AppBundle\Services\MenuService
+        arguments: []

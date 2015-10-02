@@ -50,6 +50,9 @@ class MenuController extends Controller
      */
     public function editMenuAction($menu, Request $request)
     {
+        $menuService = $this->get('automiam.menu');
+        $menuService->prepareDayMenus($menu);
+        
         return array(
             "menu" => $menu
         );

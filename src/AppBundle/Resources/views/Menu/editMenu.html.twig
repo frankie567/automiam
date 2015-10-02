@@ -5,7 +5,7 @@
 {% block body %}
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ 'automiam.menu.edit.title'|trans }}</h1>
+            <h1>{{ 'automiam.menu.edit.title'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMM')}) }}</h1>
             {% for dayMenu in menu.dayMenus %}
                 {{ dayMenu.day|date }}<br>
             {% endfor %}

@@ -25,3 +25,5 @@ automiam:
             begin_date: "Du"
             end_date: "au"
             submit: "Miam !"
+        edit:
+            title: "Mon menu du %beginDate% au %endDate%"

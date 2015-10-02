@@ -6,4 +6,5 @@ automiam:
             name: "Nom de la recette"
             recipe: "Recette"
             category: "Type de plat"
+            select_category: "Sélectionnez un type de plat"
             tags: "Mots-clés"

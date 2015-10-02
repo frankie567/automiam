@@ -1,0 +1,6 @@
+automiam:
+    recipe:
+        new:
+            name_required: "Vous devez indiquer le nom de la recette"
+            category_required: "Vous devez indiquer un type de plat"
+            one_tag_minimum: "Vous devez sélectionner au moins un mot-clé"

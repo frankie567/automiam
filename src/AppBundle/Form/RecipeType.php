@@ -23,6 +23,7 @@ class RecipeType extends AbstractType
             ))
             ->add('category', null, array(
                 'label' => 'automiam.recipe.new.category',
+                'empty_value' => 'automiam.recipe.new.select_category',
                 'required' => true
             ))
             ->add('tags', null, array(

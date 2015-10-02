@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Recipe
  *
@@ -30,6 +32,7 @@ class Recipe
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message = "automiam.recipe.new.name_required")
      */
     private $name;
 
@@ -42,11 +45,16 @@ class Recipe
     
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="recipes")
+     * @Assert\NotBlank(message = "automiam.recipe.new.category_required")
      */
     private $category;
     
     /**
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="recipes")
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "automiam.recipe.new.one_tag_minimum",
+     * )
      */
     private $tags;
 

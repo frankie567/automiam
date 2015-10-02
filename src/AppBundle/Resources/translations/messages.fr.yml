@@ -1,0 +1,9 @@
+automiam:
+    recipe:
+        new:
+            title: "Nouvelle recette"
+            submit: "Sauvegarder"
+            name: "Nom de la recette"
+            recipe: "Recette"
+            category: "Type de plat"
+            tags: "Mots-clés"

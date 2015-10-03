@@ -26,6 +26,8 @@ class MenuController extends Controller
      */
     public function newMenuAction(Request $request)
     {
+        $menus = $this->getDoctrine()->getRepository('AppBundle:Menu')->findAll();
+        
         $menu = new Menu($this->getUser());
         $form = $this->createForm(new MenuType(), $menu);
         
@@ -45,6 +47,7 @@ class MenuController extends Controller
         }
         
         return array(
+            "menus" => $menus,
             "form" => $form->createView()
         );
     }

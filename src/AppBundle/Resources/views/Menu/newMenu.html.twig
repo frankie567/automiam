@@ -16,6 +16,17 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block">{{ 'automiam.menu.new.submit'|trans }}</button>
                 </div>
             {{ form_end(form) }}
+            <h1>{{ 'automiam.menu.new.my_menus'|trans }}</h1>
+            <ul class="list-group">
+                {% for menu in menus|reverse %}
+                    <li class="list-group-item">
+                        {{ 'automiam.menu.new.menu_from_to'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMMM')}) }}
+                        <span class="pull-right">
+                            <a href="{{ path('menu_edit_route', {'id': menu.id}) }}" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i> {{ 'automiam.menu.new.view_menu'|trans }}</a>
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

@@ -25,6 +25,9 @@ automiam:
             begin_date: "From"
             end_date: "to"
             submit: "Yummy !"
+            my_menus: "My menus"
+            menu_from_to: "From %beginDate% to %endDate%"
+            view_menu: "View menu"
         edit:
             title: "My menu from %beginDate% to %endDate%"
             add_recipe: "Add dish"

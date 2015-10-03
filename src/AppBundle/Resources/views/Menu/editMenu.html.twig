@@ -17,8 +17,45 @@
                             {% endfor %}
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            {% for dayMenu in menu.dayMenus %}
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-block add-dish" dayMenu="{{ dayMenu.id }}"><i class="glyphicon glyphicon-plus-sign"></i> {{ 'automiam.menu.edit.add_recipe'|trans }}</button>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
                 </table>
+                {{ form(form) }}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var recipeSelectorCount = '{{ form.recipeSelector|length }}';
+
+        jQuery(document).ready(function() {
+            jQuery('#add-another-email').click(function(e) {
+                e.preventDefault();
+
+                var emailList = jQuery('#email-fields-list');
+
+                // grab the prototype template
+                var newWidget = emailList.attr('data-prototype');
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, emailCount);
+                emailCount++;
+
+                // create a new list element and add it to the list
+                var newLi = jQuery('<li></li>').html(newWidget);
+                newLi.appendTo(emailList);
+            });
+        })
+    </script>
 {% endblock %}

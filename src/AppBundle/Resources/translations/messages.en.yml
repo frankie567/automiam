@@ -27,3 +27,4 @@ automiam:
             submit: "Yummy !"
         edit:
             title: "My menu from %beginDate% to %endDate%"
+            add_recipe: "Add dish"

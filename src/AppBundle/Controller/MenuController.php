@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Menu;
 use AppBundle\Form\MenuType;
 
+use AppBundle\Form\RecipeSelectorsType;
+
 /**
  * @Route("/menus")
  * @Security("has_role('ROLE_USER')")
@@ -31,6 +33,10 @@ class MenuController extends Controller
         if ($form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
+            
+            // TODO : Should be in an event
+            $menuService = $this->get('automiam.menu');
+            $menuService->prepareDayMenus($menu);
 
             $em->persist($menu);
             $em->flush();
@@ -49,12 +55,13 @@ class MenuController extends Controller
      * @Template()
      */
     public function editMenuAction($menu, Request $request)
-    {
-        $menuService = $this->get('automiam.menu');
-        $menuService->prepareDayMenus($menu);
+    {   
+        $recipeSelectors = array();
+        $form = $this->createForm(new RecipeSelectorsType(), $recipeSelectors);
         
         return array(
-            "menu" => $menu
+            "menu" => $menu,
+            "form" => $form->createView()
         );
     }
 

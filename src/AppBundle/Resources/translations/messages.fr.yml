@@ -27,3 +27,4 @@ automiam:
             submit: "Miam !"
         edit:
             title: "Mon menu du %beginDate% au %endDate%"
+            add_recipe: "Ajouter un plat"

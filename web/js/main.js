@@ -1,4 +1,4 @@
-$(document).ready(function()
+function initializePlugins()
 {
     $('select').select2();
     
@@ -8,4 +8,9 @@ $(document).ready(function()
         autoclose: true,
         todayHighlight: true
     });
+}
+
+$(document).ready(function()
+{
+    initializePlugins();
 });

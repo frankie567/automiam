@@ -43,7 +43,7 @@ class Menu
     private $endDate;
     
     /**
-     * @ORM\OneToMany(targetEntity="DayMenu", mappedBy="menu")
+     * @ORM\OneToMany(targetEntity="DayMenu", mappedBy="menu", cascade={"persist", "remove"})
      */
     private $dayMenus;
 

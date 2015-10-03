@@ -30,8 +30,8 @@
                             {% for dayMenu in menu.dayMenus %}
                                 <td id="dayMenu-{{ dayMenu.id }}">
                                     <ul>
-                                        {% for recipe in dayMenu.recipes %}
-                                            <li>{{ recipe.name }}</li>
+                                        {% for menuRecipe in dayMenu.menuRecipes %}
+                                            <li>{{ menuRecipe.recipe.name }}</li>
                                         {% endfor %}
                                     </ul>
                                 </td>

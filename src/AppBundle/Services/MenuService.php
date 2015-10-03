@@ -3,6 +3,7 @@
 namespace AppBundle\Services;
 
 use AppBundle\Entity\DayMenu;
+use AppBundle\Entity\MenuRecipe;
 
 class MenuService
 {
@@ -41,7 +42,8 @@ class MenuService
             $recipe = $recipes[array_rand($recipes)];
             $dayMenu = $menu->getDayMenuById($recipeSelector["dayMenu"]);
             
-            $dayMenu->addRecipe($recipe);
+            $menuRecipe = new MenuRecipe($recipe);
+            $dayMenu->addMenuRecipe($menuRecipe);
         }
     }
 }

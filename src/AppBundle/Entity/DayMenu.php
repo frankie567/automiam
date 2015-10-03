@@ -34,9 +34,9 @@ class DayMenu
     private $menu;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Recipe")
+     * @ORM\OneToMany(targetEntity="MenuRecipe", mappedBy="dayMenu", cascade={"persist", "remove"})
      */
-    private $recipes;
+    private $menuRecipes;
 
     /**
      * Get id
@@ -104,36 +104,36 @@ class DayMenu
     }
 
     /**
-     * Add recipe
+     * Add menuRecipe
      *
-     * @param \AppBundle\Entity\Recipe $recipe
+     * @param \AppBundle\Entity\MenuRecipe $menuRecipe
      *
      * @return DayMenu
      */
-    public function addRecipe(\AppBundle\Entity\Recipe $recipe)
+    public function addMenuRecipe(\AppBundle\Entity\MenuRecipe $menuRecipe)
     {
-        $this->recipes[] = $recipe;
-
+        $this->menuRecipes[] = $menuRecipe;
+        $menuRecipe->setDayMenu($this);
         return $this;
     }
 
     /**
-     * Remove recipe
+     * Remove menuRecipe
      *
-     * @param \AppBundle\Entity\Recipe $recipe
+     * @param \AppBundle\Entity\MenuRecipe $menuRecipe
      */
-    public function removeRecipe(\AppBundle\Entity\Recipe $recipe)
+    public function removeMenuRecipe(\AppBundle\Entity\MenuRecipe $menuRecipe)
     {
-        $this->recipes->removeElement($recipe);
+        $this->menuRecipes->removeElement($menuRecipe);
     }
 
     /**
-     * Get recipes
+     * Get menuRecipes
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRecipes()
+    public function getMenuRecipes()
     {
-        return $this->recipes;
+        return $this->menuRecipes;
     }
 }

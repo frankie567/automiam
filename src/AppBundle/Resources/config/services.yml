@@ -2,3 +2,8 @@ services:
     automiam.menu:
         class: AppBundle\Services\MenuService
         arguments: []
+    automiam.form.recipeselector:
+        class: AppBundle\Form\RecipeSelectorType
+        arguments: [@translator]
+        tags:
+        - { name: form.type, alias: 'appbundle_recipe_selector' }

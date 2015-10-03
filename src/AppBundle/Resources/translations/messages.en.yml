@@ -28,3 +28,5 @@ automiam:
         edit:
             title: "My menu from %beginDate% to %endDate%"
             add_recipe: "Add dish"
+            select_category: "Type"
+            tags: "Tags"

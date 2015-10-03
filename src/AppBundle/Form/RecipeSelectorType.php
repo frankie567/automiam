@@ -8,6 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class RecipeSelectorType extends AbstractType
 {
+    private $translator;
+    
+    public function __construct($translator)
+    {
+        $this->translator = $translator;
+    }
+    
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -20,15 +27,16 @@ class RecipeSelectorType extends AbstractType
             ))
             ->add('category', 'entity', array(
                 'class' => 'AppBundle:Category',
-                'label' => 'automiam.recipe.new.category',
-                'empty_value' => 'automiam.recipe.new.select_category',
-                'required' => true
+                'label' => false,
+                'required' => true,
+                'placeholder' => 'automiam.menu.edit.select_category'
             ))
             ->add('tags', 'entity', array(
                 'class' => 'AppBundle:Tag',
-                'label' => 'automiam.recipe.new.tags',
+                'label' => false,
                 'multiple' => true,
-                'required' => true
+                'required' => true,
+                'attr' => array('data-placeholder' => $this->translator->trans('automiam.menu.edit.tags'))
             ))
         ;
     }

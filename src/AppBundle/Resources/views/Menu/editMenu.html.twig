@@ -11,7 +11,7 @@
                     <thead>
                         <tr>
                             {% for dayMenu in menu.dayMenus %}
-                                <th>
+                                <th style="width:{{ 100 / menu.dayMenus|length }}%">
                                     {{ dayMenu.day|localizeddate(format = 'EEEE d') }}
                                 </th>
                             {% endfor %}
@@ -21,16 +21,22 @@
                         <tr>
                             {% for dayMenu in menu.dayMenus %}
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-block add-dish" dayMenu="{{ dayMenu.id }}"><i class="glyphicon glyphicon-plus-sign"></i> {{ 'automiam.menu.edit.add_recipe'|trans }}</button>
+                                    <button type="button" class="btn btn-primary btn-block add-dish" daymenu="{{ dayMenu.id }}"><i class="glyphicon glyphicon-plus-sign"></i> {{ 'automiam.menu.edit.add_recipe'|trans }}</button>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% for dayMenu in menu.dayMenus %}
+                                <td id="dayMenu-{{ dayMenu.id }}">
                                 </td>
                             {% endfor %}
                         </tr>
                     </tbody>
                 </table>
-                {{ form(form) }}
             </div>
         </div>
     </div>
+    <div id="recipeSelectorPrototype" data-prototype="{% filter escape %}{{ include('AppBundle:Menu:recipeSelectorPrototype.html.twig', { 'form': form.recipeSelector.vars.prototype }) }}{% endfilter %}"></div>
 {% endblock %}
 
 {% block javascripts %}
@@ -38,23 +44,21 @@
     <script type="text/javascript">
         var recipeSelectorCount = '{{ form.recipeSelector|length }}';
 
-        jQuery(document).ready(function() {
-            jQuery('#add-another-email').click(function(e) {
+        $(document).ready(function() {
+            $('.add-dish').click(function(e) {
                 e.preventDefault();
+                
+                var dayMenu = $(this).attr('dayMenu');           
+                var dayMenuList = $('#dayMenu-' + dayMenu);
 
-                var emailList = jQuery('#email-fields-list');
+                var newWidget = $('#recipeSelectorPrototype').attr('data-prototype');
+                newWidget = newWidget.replace(/__name__/g, recipeSelectorCount);
+                recipeSelectorCount++;
 
-                // grab the prototype template
-                var newWidget = emailList.attr('data-prototype');
-                // replace the "__name__" used in the id and name of the prototype
-                // with a number that's unique to your emails
-                // end name attribute looks like name="contact[emails][2]"
-                newWidget = newWidget.replace(/__name__/g, emailCount);
-                emailCount++;
-
-                // create a new list element and add it to the list
-                var newLi = jQuery('<li></li>').html(newWidget);
-                newLi.appendTo(emailList);
+                $(newWidget).appendTo(dayMenuList);
+                
+                initializePlugins();
+                $('#appbundle_recipe_selectors_recipeSelector_'+ (recipeSelectorCount - 1) + '_dayMenu').val(dayMenu);
             });
         })
     </script>

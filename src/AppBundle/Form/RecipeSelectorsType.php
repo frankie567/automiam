@@ -16,7 +16,7 @@ class RecipeSelectorsType extends AbstractType
     {
         $builder
             ->add('recipeSelector', 'collection', array(
-                'type' => new RecipeSelectorType(),
+                'type' => 'appbundle_recipe_selector',
                 'allow_add' => true,
                 'allow_delete' => true
             ))

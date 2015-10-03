@@ -21,6 +21,9 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
         $queryBuilder->andWhere('t.id IN(:tags)');
         $queryBuilder->setParameter('tags', array_values($tags->toArray()));
         
+        $queryBuilder->having('COUNT(t) >= :nbTags');
+        $queryBuilder->setParameter('nbTags', count($tags));
+        
         return $queryBuilder->getQuery()->getResult();
     }
 }

@@ -1,7 +1,7 @@
 services:
     automiam.menu:
         class: AppBundle\Services\MenuService
-        arguments: []
+        arguments: [@doctrine.orm.entity_manager]
     automiam.form.recipeselector:
         class: AppBundle\Form\RecipeSelectorType
         arguments: [@translator]

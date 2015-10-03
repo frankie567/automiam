@@ -3,6 +3,7 @@
 {% block title %}AppBundle:Menu:editMenu{% endblock %}
 
 {% block body %}
+    {{ form_start(form) }}
     <div class="row">
         <div class="col-md-12">
             <h1>{{ 'automiam.menu.edit.title'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMMM')}) }}</h1>
@@ -28,14 +29,22 @@
                         <tr>
                             {% for dayMenu in menu.dayMenus %}
                                 <td id="dayMenu-{{ dayMenu.id }}">
+                                    <ul>
+                                        {% for recipe in dayMenu.recipes %}
+                                            <li>{{ recipe.name }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 </td>
                             {% endfor %}
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">{{ 'automiam.menu.edit.submit'|trans }}</button>
         </div>
     </div>
+    {% do form.recipeSelector.setRendered %}
+    {{ form_end(form) }}
     <div id="recipeSelectorPrototype" data-prototype="{% filter escape %}{{ include('AppBundle:Menu:recipeSelectorPrototype.html.twig', { 'form': form.recipeSelector.vars.prototype }) }}{% endfilter %}"></div>
 {% endblock %}
 

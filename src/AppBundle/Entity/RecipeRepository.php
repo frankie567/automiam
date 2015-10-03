@@ -10,4 +10,17 @@ namespace AppBundle\Entity;
  */
 class RecipeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function searchRecipes($categoryId, $tags)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+        $queryBuilder->leftJoin('r.category', 'category');
+        $queryBuilder->where('category.id = :categoryId');
+        $queryBuilder->setParameter(':categoryId', $categoryId);
+        
+        $queryBuilder->leftJoin('r.tags', 't');
+        $queryBuilder->andWhere('t.id IN(:tags)');
+        $queryBuilder->setParameter('tags', array_values($tags->toArray()));
+        
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

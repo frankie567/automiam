@@ -6,6 +6,13 @@ use AppBundle\Entity\DayMenu;
 
 class MenuService
 {
+    private $em;
+    
+    public function __construct($em)
+    {
+        $this->em = $em;
+    }
+    
     /* Create a DayMenu for each day (if not already done) */
     public function prepareDayMenus($menu)
     {
@@ -20,6 +27,21 @@ class MenuService
                 
                 $currentDate->add(new \DateInterval('P1D'));
             }
+        }
+    }
+    
+    /* Compute recipes given the parameters */
+    public function computeRecipes($menu, $recipeSelectors)
+    {
+        $recipeRepository = $this->em->getRepository("AppBundle:Recipe");
+        
+        foreach ($recipeSelectors as $recipeSelector)
+        {
+            $recipes = $recipeRepository->searchRecipes($recipeSelector["category"], $recipeSelector["tags"]);
+            $recipe = $recipes[array_rand($recipes)];
+            $dayMenu = $menu->getDayMenuById($recipeSelector["dayMenu"]);
+            
+            $dayMenu->addRecipe($recipe);
         }
     }
 }

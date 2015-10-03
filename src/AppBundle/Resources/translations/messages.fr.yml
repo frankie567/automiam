@@ -30,3 +30,4 @@ automiam:
             add_recipe: "Ajouter un plat"
             select_category: "Type"
             tags: "Mots-clés"
+            submit: "Miam !"

@@ -147,6 +147,18 @@ class Menu
         return $this->dayMenus;
     }
     
+    public function getDayMenuById($id)
+    {
+        foreach ($this->getDayMenus() as $dayMenu)
+        {
+            if ($dayMenu->getId() == $id)
+            {
+                return $dayMenu;
+            }
+        }
+        return null;
+    }
+    
     /**
      * @Assert\Callback
      */

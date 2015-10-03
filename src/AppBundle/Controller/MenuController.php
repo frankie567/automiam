@@ -59,6 +59,22 @@ class MenuController extends Controller
         $recipeSelectors = array();
         $form = $this->createForm(new RecipeSelectorsType(), $recipeSelectors);
         
+        $form->handleRequest($request);
+        if ($form->isValid())
+        {
+            $recipeSelectors = $form->getData()["recipeSelector"];
+            
+            // TODO : Should be in an event
+            $menuService = $this->get('automiam.menu');
+            $menuService->computeRecipes($menu, $recipeSelectors);
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($menu);
+            $em->flush();
+            
+            return $this->redirect($this->generateURL('menu_edit_route', array('id' => $menu->getId())));
+        }
+        
         return array(
             "menu" => $menu,
             "form" => $form->createView()

@@ -30,3 +30,4 @@ automiam:
             add_recipe: "Add dish"
             select_category: "Type"
             tags: "Tags"
+            submit: "Yummy !"

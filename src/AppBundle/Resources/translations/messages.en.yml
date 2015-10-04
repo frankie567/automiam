@@ -1,4 +1,6 @@
 automiam:
+    home:
+        title: "Welcome to Automiam !"
     recipe:
         view_recipes:
             title: "My recipes"

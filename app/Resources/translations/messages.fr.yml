@@ -5,3 +5,5 @@ automiam:
         home: "Accueil"
         recipes: "Mes recettes"
         menus: "Mes menus"
+        login: "Se connecter"
+        logout: "Se déconnecter"

@@ -1,5 +1,7 @@
 <?php
 
+namespace AppBundle;
+
 use Composer\Script\Event;
 
 class HerokuDatabase

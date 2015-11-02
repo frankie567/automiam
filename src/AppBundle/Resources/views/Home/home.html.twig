@@ -5,7 +5,24 @@
 {% block body %}
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ 'automiam.home.title'|trans }}</h1>
+            <div class="jumbotron">
+                <h1>{{ 'automiam.home.title'|trans }}</h1>
+                <p>{{ 'automiam.home.details'|trans }}</p>
+                <p>
+                    {% if app.user %}
+                        <a href="{{ path('menu_new_route') }}" class="btn btn-primary btn-lg">{{ 'automiam.home.create_menu'|trans }}</a>
+                    {% else %}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-lg btn-block">{{ 'automiam.home.login'|trans }}</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-lg btn-block">{{ 'automiam.home.register'|trans }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -1,6 +1,10 @@
 automiam:
     home:
         title: "Welcome to Automiam !"
+        details: "Automiam helps you to create your weekly menus ! Input your favorite recipes and tag them ! Then, ask Automiam to create your menu following the criterias you wish. Yummy !"
+        create_menu: "Create a menu"
+        login: "Login"
+        register: "Register"
     recipe:
         view_recipes:
             title: "My recipes"

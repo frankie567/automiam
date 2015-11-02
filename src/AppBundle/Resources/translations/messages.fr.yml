@@ -1,6 +1,10 @@
 automiam:
     home:
         title: "Bienvenue sur Automiam !"
+        details: "Automiam vous aide à élaborer vos menus pour la semaine ! Renseignez vos recettes préférés et classez-les selon différents critères. Il ne vous reste plus qu'à demander à Automiam de créer votre menu en fonction des critères que vous voulez. Miam !"
+        create_menu: "Créer un menu"
+        login: "Se connecter"
+        register: "S'inscrire"
     recipe:
         view_recipes:
             title: "Mes recettes"

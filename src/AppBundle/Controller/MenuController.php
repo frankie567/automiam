@@ -27,7 +27,7 @@ class MenuController extends Controller
      */
     public function newMenuAction(Request $request)
     {
-        $menus = $this->getDoctrine()->getRepository('AppBundle:Menu')->findAll();
+        $menus = $this->getDoctrine()->getRepository('AppBundle:Menu')->findBy(array("user" => $this->getUser()));
         
         $menu = new Menu($this->getUser());
         $form = $this->createForm(new MenuType(), $menu);
@@ -56,6 +56,7 @@ class MenuController extends Controller
     /**
      * @Route("/edit/{id}", name="menu_edit_route")
      * @ParamConverter("menu", class="AppBundle:Menu")
+     * @Security("is_granted('edit', menu)")
      * @Template()
      */
     public function editMenuAction($menu, Request $request)
@@ -89,6 +90,7 @@ class MenuController extends Controller
      * @Route("/edit/{id}/remove/{menuRecipeId}", name="remove_menu_recipe_route")
      * @ParamConverter("menu", class="AppBundle:Menu")
      * @ParamConverter("menuRecipe", class="AppBundle:MenuRecipe", options={"id" = "menuRecipeId"})
+     * @Security("is_granted('edit', menu)")
      */
     public function removeMenuRecipeAction($menu, $menuRecipe, Request $request)
     {   

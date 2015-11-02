@@ -59,6 +59,7 @@ class RecipeController extends Controller
     /**
      * @Route("/edit/{slug}", name="recipe_edit_route")
      * @ParamConverter("recipe", class="AppBundle:Recipe")
+     * @Security("is_granted('edit', recipe)")
      * @Template()
      */
     public function editRecipeAction($recipe, Request $request)

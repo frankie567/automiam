@@ -12,3 +12,13 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.token_storage]
         tags:
             - { name: validator.constraint_validator, alias: recipe_exists_validator }
+    automiam.access.menu_voter:
+        class:      AppBundle\Security\Authorization\Voter\MenuVoter
+        public:     false
+        tags:
+            - { name: security.voter }
+    automiam.access.recipe_voter:
+        class:      AppBundle\Security\Authorization\Voter\RecipeVoter
+        public:     false
+        tags:
+            - { name: security.voter }

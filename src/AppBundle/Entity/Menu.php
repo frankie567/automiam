@@ -23,6 +23,11 @@ class Menu
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="menus")
+     */
+    private $user;
 
     /**
      * @var \DateTime
@@ -108,8 +113,9 @@ class Menu
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($user)
     {
+        $this->setUser($user);
         $this->dayMenus = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -183,5 +189,29 @@ class Menu
                 ->atPath('beginDate')
                 ->addViolation();
         }
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Menu
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+        $user->addMenu($this);
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

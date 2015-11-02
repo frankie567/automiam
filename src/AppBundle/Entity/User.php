@@ -23,6 +23,11 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Recipe", mappedBy="user")
      */
     private $recipes;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Menu", mappedBy="user")
+     */
+    private $menus;
 
     public function __construct()
     {
@@ -62,5 +67,39 @@ class User extends BaseUser
     public function getRecipes()
     {
         return $this->recipes;
+    }
+
+    /**
+     * Add menu
+     *
+     * @param \AppBundle\Entity\Menu $menu
+     *
+     * @return User
+     */
+    public function addMenu(\AppBundle\Entity\Menu $menu)
+    {
+        $this->menus[] = $menu;
+
+        return $this;
+    }
+
+    /**
+     * Remove menu
+     *
+     * @param \AppBundle\Entity\Menu $menu
+     */
+    public function removeMenu(\AppBundle\Entity\Menu $menu)
+    {
+        $this->menus->removeElement($menu);
+    }
+
+    /**
+     * Get menus
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMenus()
+    {
+        return $this->menus;
     }
 }

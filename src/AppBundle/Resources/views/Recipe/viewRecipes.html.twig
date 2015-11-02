@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Recipe:newRecipe{% endblock %}
+{% block title %}{{ 'automiam.recipe.view_recipes.page_title'|trans }}{{ parent() }}{% endblock %}
 
 {% block body %}
 <div class="row">

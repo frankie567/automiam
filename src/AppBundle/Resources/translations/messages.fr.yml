@@ -1,5 +1,6 @@
 automiam:
     home:
+        page_title: "Bienvenue sur Automiam !"
         title: "Bienvenue sur Automiam !"
         details: "Automiam vous aide à élaborer vos menus pour la semaine ! Renseignez vos recettes préférés et classez-les selon différents critères. Il ne vous reste plus qu'à demander à Automiam de créer votre menu en fonction des critères que vous voulez. Miam !"
         create_menu: "Créer un menu"
@@ -7,6 +8,7 @@ automiam:
         register: "S'inscrire"
     recipe:
         view_recipes:
+            page_title: "Mes recettes"
             title: "Mes recettes"
             new: "Nouvelle recette"
             name: "Nom"
@@ -19,6 +21,7 @@ automiam:
             delete_cancel_button: "Annuler"
             delete_confirm_button: "Supprimer"
         new:
+            page_title: "Nouvelle recette"
             title: "Nouvelle recette"
             submit: "Sauvegarder"
             name: "Nom de la recette"
@@ -27,10 +30,12 @@ automiam:
             select_category: "Sélectionnez un type de plat"
             tags: "Mots-clés"
         edit:
+            page_title: "Modifier la recette \"%recipe%\""
             title: "Modifier la recette \"%recipe%\""
             submit: "Sauvegarder"
     menu:
         new:
+            page_title: "Nouveau menu"
             title: "Nouveau menu"
             begin_date: "Du"
             end_date: "au"
@@ -39,6 +44,7 @@ automiam:
             menu_from_to: "Du %beginDate% au %endDate%"
             view_menu: "Voir le menu"
         edit:
+            page_title: "Mon menu du %beginDate% au %endDate%"
             title: "Mon menu du %beginDate% au %endDate%"
             add_recipe: "Ajouter un plat"
             select_category: "Type"

@@ -1,5 +1,6 @@
 automiam:
     home:
+        page_title: "Welcome to Automiam !"
         title: "Welcome to Automiam !"
         details: "Automiam helps you to create your weekly menus ! Input your favorite recipes and tag them ! Then, ask Automiam to create your menu following the criterias you wish. Yummy !"
         create_menu: "Create a menu"
@@ -7,6 +8,7 @@ automiam:
         register: "Register"
     recipe:
         view_recipes:
+            page_title: "My recipes"
             title: "My recipes"
             new: "New recipe"
             name: "Name"
@@ -19,6 +21,7 @@ automiam:
             delete_cancel_button: "Cancel"
             delete_confirm_button: "Delete"
         new:
+            page_title: "New recipe"
             title: "New recipe"
             submit: "Save"
             name: "Recipe's name"
@@ -27,10 +30,12 @@ automiam:
             select_category: "Select a type of dish"
             tags: "Tags"
         edit:
+            page_title: "Edit recipe \"%recipe%\""
             title: "Edit recipe \"%recipe%\""
             submit: "Save"
     menu:
         new:
+            page_title: "New menu"
             title: "New menu"
             begin_date: "From"
             end_date: "to"
@@ -39,6 +44,7 @@ automiam:
             menu_from_to: "From %beginDate% to %endDate%"
             view_menu: "View menu"
         edit:
+            page_title: "My menu from %beginDate% to %endDate%"
             title: "My menu from %beginDate% to %endDate%"
             add_recipe: "Add dish"
             select_category: "Type"

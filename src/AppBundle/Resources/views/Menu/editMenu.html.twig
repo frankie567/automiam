@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 {% form_theme form 'AppBundle:Menu:recipeSelectorPrototype.html.twig' %}
 
-{% block title %}AppBundle:Menu:editMenu{% endblock %}
+{% block title %}{{ 'automiam.menu.edit.title'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMMM')}) }}{{ parent() }}{% endblock %}
 
 {% block body %}
     {{ form_start(form) }}

@@ -31,9 +31,12 @@
                         <tr>
                             {% for dayMenu in menu.dayMenus %}
                                 <td id="dayMenu-{{ dayMenu.id }}">
-                                    <ul>
+                                    <ul class="list-group">
                                         {% for menuRecipe in dayMenu.menuRecipes %}
-                                            <li>{{ menuRecipe.recipe.name }}</li>
+                                            <li class="list-group-item">
+                                                <button class="remove-menu-recipe pull-right btn btn-xs btn-primary" data-recipe-id="{{ menuRecipe.id }}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                {{ menuRecipe.recipe.name }}
+                                            </li>
                                         {% endfor %}
                                     </ul>
                                     {% for recipeSelector in form.recipeSelector %}
@@ -75,6 +78,15 @@
                 
                 initializePlugins();
                 $('#appbundle_recipe_selectors_recipeSelector_'+ (recipeSelectorCount - 1) + '_dayMenu').val(dayMenu);
+            });
+            
+            $('.remove-menu-recipe').click(function(e) {
+                e.preventDefault();
+                var removeMenuRecipeUrl = '{{ path('remove_menu_recipe_route', {'id': menu.id, 'menuRecipeId': 'menuRecipeId'}) }}';
+                
+                $.get(removeMenuRecipeUrl.replace('menuRecipeId', $(this).attr('data-recipe-id')));
+                
+                $(this).parent().remove();
             });
         })
     </script>

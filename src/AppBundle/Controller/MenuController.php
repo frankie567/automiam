@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use AppBundle\Entity\Menu;
 use AppBundle\Form\MenuType;
@@ -82,6 +83,20 @@ class MenuController extends Controller
             "menu" => $menu,
             "form" => $form->createView()
         );
+    }
+    
+    /**
+     * @Route("/edit/{id}/remove/{menuRecipeId}", name="remove_menu_recipe_route")
+     * @ParamConverter("menu", class="AppBundle:Menu")
+     * @ParamConverter("menuRecipe", class="AppBundle:MenuRecipe", options={"id" = "menuRecipeId"})
+     */
+    public function removeMenuRecipeAction($menu, $menuRecipe, Request $request)
+    {   
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($menuRecipe);
+        $em->flush();
+        
+        return new Response("OK");
     }
 
     /**

@@ -241,4 +241,21 @@ class Recipe
     {
         return $this->slug;
     }
+    
+    public static function substractSets($recipeSets1, $recipeSets2)
+    {
+        return array_udiff($recipeSets1, $recipeSets2,
+            function ($obj_a, $obj_b)
+            {
+                if ($obj_a->getId() == $obj_b->getId())
+                {
+                    return 0;
+                }
+                else
+                {
+                    return ($obj_a->getId() > $obj_b->getId())? 1:-1;
+                }
+            }
+        );
+    }
 }

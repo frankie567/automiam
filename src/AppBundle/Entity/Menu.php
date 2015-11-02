@@ -159,6 +159,19 @@ class Menu
         return null;
     }
     
+    public function getAllRecipes()
+    {
+        $recipes = array();
+        foreach ($this->getDayMenus() as $dayMenu)
+        {
+            foreach ($dayMenu->getMenuRecipes() as $menuRecipe)
+            {
+                $recipes[] = $menuRecipe->getRecipe();
+            }
+        }
+        return $recipes;
+    }
+    
     /**
      * @Assert\Callback
      */

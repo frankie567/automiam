@@ -4,6 +4,7 @@ namespace AppBundle\Services;
 
 use AppBundle\Entity\DayMenu;
 use AppBundle\Entity\MenuRecipe;
+use AppBundle\Entity\Recipe;
 
 class MenuService
 {
@@ -36,16 +37,24 @@ class MenuService
     {
         $recipeRepository = $this->em->getRepository("AppBundle:Recipe");
         
-        $notFoundRecipes = false;
         foreach ($recipeSelectors as $index => $recipeSelector)
         {
-            $recipes = $recipeRepository->searchRecipes($recipeSelector["category"], $recipeSelector["tags"]);
+            $foundRecipes = $recipeRepository->searchRecipes($recipeSelector["category"], $recipeSelector["tags"]);
+            
+            /* Try to take not already used recipes */
+            $recipes = Recipe::substractSets($foundRecipes, $menu->getAllRecipes());
+            if (count($recipes) == 0)
+            {
+                $recipes = $foundRecipes;
+            }
+            
+            /* Take a random recipe from the set */
             $recipe = $recipes[array_rand($recipes)];
-            $dayMenu = $menu->getDayMenuById($recipeSelector["dayMenu"]);
-        
+            
+            /* Add it to the menu */
             $menuRecipe = new MenuRecipe($recipe);
+            $dayMenu = $menu->getDayMenuById($recipeSelector["dayMenu"]);
             $dayMenu->addMenuRecipe($menuRecipe);
         }
-        return $notFoundRecipes;
     }
 }

@@ -22,8 +22,9 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
         $queryBuilder->setParameter('tags', array_values($tags->toArray()));
         
         $queryBuilder->having('COUNT(t) >= :nbTags');
+        $queryBuilder->add('groupBy', 'r.id');
         $queryBuilder->setParameter('nbTags', count($tags));
-        
+
         return $queryBuilder->getQuery()->getResult();
     }
 }

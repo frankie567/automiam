@@ -71,7 +71,7 @@ class MenuController extends Controller
             
             // TODO : Should be in an event
             $menuService = $this->get('automiam.menu');
-            $menuService->computeRecipes($menu, $recipeSelectors, $form);
+            $menuService->computeRecipes($menu, $recipeSelectors);
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($menu);

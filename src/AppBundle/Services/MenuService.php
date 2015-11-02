@@ -35,7 +35,7 @@ class MenuService
     }
     
     /* Compute recipes given the parameters */
-    public function computeRecipes($menu, $recipeSelectors, $form)
+    public function computeRecipes($menu, $recipeSelectors)
     {
         $recipeRepository = $this->em->getRepository("AppBundle:Recipe");
         

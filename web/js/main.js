@@ -29,4 +29,5 @@ function initializePlugins()
 $(document).ready(function()
 {
     initializePlugins();
+    $('[data-toggle="popover"]').popover();
 });

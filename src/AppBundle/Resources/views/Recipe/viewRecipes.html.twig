@@ -32,6 +32,7 @@
                             </td>
                             <td>
                                 <a href="{{ path('recipe_edit_route', {'slug': recipe.slug}) }}" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> {{ 'automiam.recipe.view_recipes.edit'|trans }}</a>
+                                <button type="button" class="btn btn-xs btn-primary" data-toggle="popover" title="{{ 'automiam.recipe.view_recipes.delete_confirm'|trans }}" data-content="<button type='button' class='btn btn-block btn-default'>{{ 'automiam.recipe.view_recipes.delete_cancel_button'|trans }}</button><a href='{{ path('recipe_delete_route', {'slug': recipe.slug}) }}' class='btn btn-block btn-primary'>{{ 'automiam.recipe.view_recipes.delete_confirm_button'|trans }}</a>" data-html="true" data-trigger="focus" data-placement="top"><i class="glyphicon glyphicon-remove"></i> {{ 'automiam.recipe.view_recipes.delete'|trans }}</button>
                             </td>
                         </tr>
                     {% endfor %}

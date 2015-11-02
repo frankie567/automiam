@@ -84,13 +84,17 @@ class RecipeController extends Controller
     }
 
     /**
-     * @Route("/delete")
-     * @Template()
+     * @Route("/delete/{slug}", name="recipe_delete_route")
+     * @ParamConverter("recipe", class="AppBundle:Recipe")
+     * @Security("is_granted('edit', recipe)")
      */
-    public function deleteRecipeAction()
+    public function deleteRecipeAction($recipe)
     {
-        return array(
-                // ...
-            );    }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($recipe);
+        $em->flush();
+        
+        return $this->redirect($this->generateURL('recipe_view_recipes_route'));
+    }
 
 }

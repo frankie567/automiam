@@ -10,6 +10,10 @@ automiam:
             tags: "Mots-clés"
             actions: "Actions"
             edit: "Modifier"
+            delete: "Supprimer"
+            delete_confirm: "Êtes-vous sûr de vouloir supprimer cette recette ?"
+            delete_cancel_button: "Annuler"
+            delete_confirm_button: "Supprimer"
         new:
             title: "Nouvelle recette"
             submit: "Sauvegarder"

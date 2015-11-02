@@ -7,3 +7,5 @@ automiam:
     menu:
         new:
             begin_date_less_than_end_date: "Begin date has to be before end date"
+        edit:
+            recipe_not_found: "No recipe found"

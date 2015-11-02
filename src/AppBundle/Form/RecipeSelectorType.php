@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use AppBundle\Validator\Constraints\RecipeExists;
+
 class RecipeSelectorType extends AbstractType
 {
     private $translator;
@@ -29,7 +31,8 @@ class RecipeSelectorType extends AbstractType
                 'class' => 'AppBundle:Category',
                 'label' => false,
                 'required' => true,
-                'placeholder' => 'automiam.menu.edit.select_category'
+                'placeholder' => 'automiam.menu.edit.select_category',
+                
             ))
             ->add('tags', 'entity', array(
                 'class' => 'AppBundle:Tag',
@@ -47,6 +50,8 @@ class RecipeSelectorType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'constraints'=> new RecipeExists(),
+            'error_bubbling' => false
         ));
     }
 

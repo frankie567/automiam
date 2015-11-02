@@ -32,18 +32,20 @@ class MenuService
     }
     
     /* Compute recipes given the parameters */
-    public function computeRecipes($menu, $recipeSelectors)
+    public function computeRecipes($menu, $recipeSelectors, $form)
     {
         $recipeRepository = $this->em->getRepository("AppBundle:Recipe");
         
-        foreach ($recipeSelectors as $recipeSelector)
+        $notFoundRecipes = false;
+        foreach ($recipeSelectors as $index => $recipeSelector)
         {
             $recipes = $recipeRepository->searchRecipes($recipeSelector["category"], $recipeSelector["tags"]);
             $recipe = $recipes[array_rand($recipes)];
             $dayMenu = $menu->getDayMenuById($recipeSelector["dayMenu"]);
-            
+        
             $menuRecipe = new MenuRecipe($recipe);
             $dayMenu->addMenuRecipe($menuRecipe);
         }
+        return $notFoundRecipes;
     }
 }

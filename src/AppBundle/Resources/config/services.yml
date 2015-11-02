@@ -7,3 +7,8 @@ services:
         arguments: [@translator]
         tags:
         - { name: form.type, alias: 'appbundle_recipe_selector' }
+    automiam.form.recipe_exists_validator:
+        class: AppBundle\Validator\Constraints\RecipeExistsValidator
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: validator.constraint_validator, alias: recipe_exists_validator }

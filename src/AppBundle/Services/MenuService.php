@@ -9,10 +9,12 @@ use AppBundle\Entity\Recipe;
 class MenuService
 {
     private $em;
+    private $tokenStorage;
     
-    public function __construct($em)
+    public function __construct($em, $tokenStorage)
     {
         $this->em = $em;
+        $this->tokenStorage = $tokenStorage;
     }
     
     /* Create a DayMenu for each day (if not already done) */
@@ -39,7 +41,7 @@ class MenuService
         
         foreach ($recipeSelectors as $index => $recipeSelector)
         {
-            $foundRecipes = $recipeRepository->searchRecipes($recipeSelector["category"], $recipeSelector["tags"]);
+            $foundRecipes = $recipeRepository->searchRecipes($this->tokenStorage->getToken()->getUser(), $recipeSelector["category"], $recipeSelector["tags"]);
             
             /* Try to take not already used recipes */
             $recipes = Recipe::substractSets($foundRecipes, $menu->getAllRecipes());

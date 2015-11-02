@@ -34,7 +34,7 @@
                                     <ul class="list-group">
                                         {% for menuRecipe in dayMenu.menuRecipes %}
                                             <li class="list-group-item">
-                                                <button class="remove-menu-recipe pull-right btn btn-xs btn-primary" data-recipe-id="{{ menuRecipe.id }}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                <button class="remove-menu-recipe pull-right btn btn-xs btn-danger" data-recipe-id="{{ menuRecipe.id }}"><i class="glyphicon glyphicon-remove"></i></button>
                                                 {{ menuRecipe.recipe.name }}
                                             </li>
                                         {% endfor %}

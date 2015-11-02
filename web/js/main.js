@@ -22,7 +22,8 @@ function initializePlugins()
         format: "dd/mm/yyyy",
         language: "fr",
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
+        orientation: 'top auto'
     });
 }
 

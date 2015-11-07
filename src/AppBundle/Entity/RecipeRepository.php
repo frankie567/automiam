@@ -22,12 +22,15 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
         $queryBuilder->andWhere('category.id = :categoryId');
         $queryBuilder->setParameter(':categoryId', $categoryId);
         
-        $queryBuilder->leftJoin('r.tags', 't');
-        $queryBuilder->andWhere('t.id IN(:tags)');
-        $queryBuilder->setParameter(':tags', array_values($tags->toArray()));
+        if (count($tags) > 0)
+        {
+            $queryBuilder->leftJoin('r.tags', 't');
+            $queryBuilder->andWhere('t.id IN(:tags)');
+            $queryBuilder->setParameter(':tags', array_values($tags->toArray()));
         
-        $queryBuilder->having('COUNT(t) >= :nbTags');
-        $queryBuilder->setParameter('nbTags', count($tags));
+            $queryBuilder->having('COUNT(t) >= :nbTags');
+            $queryBuilder->setParameter('nbTags', count($tags));
+        }
         
         $queryBuilder->add('groupBy', 'r.id');
 

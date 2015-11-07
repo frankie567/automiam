@@ -38,7 +38,7 @@ class RecipeSelectorType extends AbstractType
                 'class' => 'AppBundle:Tag',
                 'label' => false,
                 'multiple' => true,
-                'required' => true,
+                'required' => false,
                 'attr' => array('data-placeholder' => $this->translator->trans('automiam.menu.edit.tags'))
             ))
         ;

@@ -46,6 +46,7 @@ automiam:
         edit:
             page_title: "My menu from %beginDate% to %endDate%"
             title: "My menu from %beginDate% to %endDate%"
+            print: "Print"
             add_recipe: "Add dish"
             select_category: "Type"
             tags: "Tags"

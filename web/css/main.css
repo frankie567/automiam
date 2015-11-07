@@ -2,3 +2,34 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+/* Menu printing CSS */
+@media print {
+    @page {
+        size: landscape;
+        margin 0;
+    }
+    
+    .menu > h1 {
+        font-size: 32px;
+        text-align: center;
+        margin-top: 0px;
+    }
+    
+    .menu button, .menu .btn, .add-dish-line {
+        display: none;
+    }
+    
+    .menu th {
+        text-align: center;
+    }
+    
+    .menu .list-group-item {
+        border: 0px;
+        padding: 0 0 0 0;
+    }
+    
+    .menu .list-group-item::before {
+        content: "• ";
+    }
+}

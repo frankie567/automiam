@@ -7,8 +7,13 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
     <div class="row">
-        <div class="col-md-12">
-            <h1>{{ 'automiam.menu.edit.title'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMMM')}) }}</h1>
+        <div class="col-md-12 menu">
+            <h1>
+                {{ 'automiam.menu.edit.title'|trans({'%beginDate%': menu.beginDate|localizeddate(format = 'd MMMM'), '%endDate%': menu.endDate|localizeddate(format = 'd MMMM')}) }}
+                <small>
+                    <a href="javascript:window.print()" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-print"></i> {{ 'automiam.menu.edit.print'|trans }}</a>
+                </small>
+            </h1>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -21,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr class="add-dish-line">
                             {% for dayMenu in menu.dayMenus %}
                                 <td>
                                     <button type="button" class="btn btn-primary btn-block add-dish" daymenu="{{ dayMenu.id }}"><i class="glyphicon glyphicon-plus-sign"></i> {{ 'automiam.menu.edit.add_recipe'|trans }}</button>
